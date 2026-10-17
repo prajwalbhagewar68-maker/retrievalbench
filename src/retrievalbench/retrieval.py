@@ -57,13 +57,14 @@ class BM25Retriever:
             raise ValueError("top_k must be greater than zero")
         if not query.strip():
             return []
-        scores = self.model.get_scores(tokenize(query))
-        ranked = sorted(enumerate(scores), key=lambda pair: (-float(pair[1]), pair[0]))
-        return [
-            {**self.chunks[index], "score": float(score), "retriever": self.name}
-            for index, score in ranked[:top_k]
-            if score > 0
-        ]
+       scores = self.model.get_scores(tokenize(query))
+ranked = sorted(enumerate(scores), key=lambda pair: (-float(pair[1]), pair[0]))
+positive = [(index, score) for index, score in ranked if score > 0]
+
+return [
+    {**self.chunks[index], "score": float(score), "retriever": self.name}
+    for index, score in ranked[:top_k]
+]
 
 
 def available_retrievers(chunks: Sequence[dict]) -> dict[str, object]:
