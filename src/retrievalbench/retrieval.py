@@ -23,18 +23,25 @@ class TfidfRetriever:
         self.vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2))
         self.matrix = self.vectorizer.fit_transform([str(c["text"]) for c in self.chunks])
 
-    def search(self, query: str, top_k: int = 5) -> list[dict]:
+       def search(self, query: str, top_k: int = 5) -> list[dict]:
         if top_k <= 0:
             raise ValueError("top_k must be greater than zero")
         if not query.strip():
             return []
-        query_vector = self.vectorizer.transform([query])
-        scores = cosine_similarity(query_vector, self.matrix).ravel()
-        ranked = sorted(enumerate(scores), key=lambda pair: (-float(pair[1]), pair[0]))
+
+        scores = self.model.get_scores(tokenize(query))
+        ranked = sorted(
+            enumerate(scores),
+            key=lambda pair: (-float(pair[1]), pair[0]),
+        )
+
         return [
-            {**self.chunks[index], "score": float(score), "retriever": self.name}
+            {
+                **self.chunks[index],
+                "score": float(score),
+                "retriever": self.name,
+            }
             for index, score in ranked[:top_k]
-            if score > 0
         ]
 
 
