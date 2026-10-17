@@ -2,41 +2,211 @@
   {
     "question_id": "q1",
     "question": "What defines code blocks in Python?",
-    "relevant_doc_ids": ["python_basics.md"]
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
   },
   {
     "question_id": "q2",
     "question": "What is the difference between TF-IDF and BM25?",
-    "relevant_doc_ids": ["retrieval_methods.md"]
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
   },
   {
     "question_id": "q3",
     "question": "What does Recall at k measure?",
-    "relevant_doc_ids": ["testing_and_metrics.md"]
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
   },
   {
     "question_id": "q4",
     "question": "Why does a valid citation not necessarily prove an answer claim?",
-    "relevant_doc_ids": ["rag_and_citations.md"]
+    "relevant_doc_ids": [
+      "rag_and_citations.md"
+    ]
   },
   {
     "question_id": "q5",
     "question": "Which checks detect missing values and schema changes?",
-    "relevant_doc_ids": ["data_quality.md"]
+    "relevant_doc_ids": [
+      "data_quality.md"
+    ]
   },
   {
     "question_id": "q6",
     "question": "What is mean reciprocal rank used for?",
-    "relevant_doc_ids": ["testing_and_metrics.md"]
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
   },
   {
     "question_id": "q7",
     "question": "What does dense retrieval use to find semantically similar passages?",
-    "relevant_doc_ids": ["retrieval_methods.md"]
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
   },
   {
     "question_id": "q8",
     "question": "How should a reproducible benchmark be documented?",
-    "relevant_doc_ids": ["testing_and_metrics.md"]
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q9",
+    "question": "What is indentation used for in Python?",
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
+  },
+  {
+    "question_id": "q10",
+    "question": "How are lists and tuples different in Python?",
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
+  },
+  {
+    "question_id": "q11",
+    "question": "What is the purpose of a Python dictionary?",
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
+  },
+  {
+    "question_id": "q12",
+    "question": "How do functions help organize Python code?",
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
+  },
+  {
+    "question_id": "q13",
+    "question": "How are functions defined in Python?",
+    "relevant_doc_ids": [
+      "python_basics.md"
+    ]
+  },
+  {
+    "question_id": "q14",
+    "question": "What does TF-IDF use to represent documents?",
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
+  },
+  {
+    "question_id": "q15",
+    "question": "Which factors does BM25 account for?",
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
+  },
+  {
+    "question_id": "q16",
+    "question": "How does TF-IDF represent text numerically?",
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
+  },
+  {
+    "question_id": "q17",
+    "question": "What is the purpose of dense vector embeddings in retrieval?",
+    "relevant_doc_ids": [
+      "retrieval_methods.md"
+    ]
+  },
+  {
+    "question_id": "q18",
+    "question": "What does Precision at k measure?",
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q19",
+    "question": "What does Recall at k measure?",
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q20",
+    "question": "Why is mean reciprocal rank useful for evaluating search?",
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q21",
+    "question": "What does latency measure?",
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q22",
+    "question": "Which factors should be recorded to make a benchmark reproducible?",
+    "relevant_doc_ids": [
+      "testing_and_metrics.md"
+    ]
+  },
+  {
+    "question_id": "q23",
+    "question": "Why is retrieving a citation different from verifying a claim?",
+    "relevant_doc_ids": [
+      "rag_and_citations.md"
+    ]
+  },
+  {
+    "question_id": "q24",
+    "question": "What should a system expose for an answer?",
+    "relevant_doc_ids": [
+      "rag_and_citations.md"
+    ]
+  },
+  {
+    "question_id": "q25",
+    "question": "What does citation validity check?",
+    "relevant_doc_ids": [
+      "rag_and_citations.md"
+    ]
+  },
+  {
+    "question_id": "q26",
+    "question": "What does groundedness evaluation examine?",
+    "relevant_doc_ids": [
+      "rag_and_citations.md"
+    ]
+  },
+  {
+    "question_id": "q27",
+    "question": "How can missing values affect data quality?",
+    "relevant_doc_ids": [
+      "data_quality.md"
+    ]
+  },
+  {
+    "question_id": "q28",
+    "question": "Why should incoming data be checked against a schema?",
+    "relevant_doc_ids": [
+      "data_quality.md"
+    ]
+  },
+  {
+    "question_id": "q29",
+    "question": "What is data validation intended to detect?",
+    "relevant_doc_ids": [
+      "data_quality.md"
+    ]
+  },
+  {
+    "question_id": "q30",
+    "question": "Why is monitoring data quality important over time?",
+    "relevant_doc_ids": [
+      "data_quality.md"
+    ]
   }
 ]
