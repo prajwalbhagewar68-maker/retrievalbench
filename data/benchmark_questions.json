@@ -1,0 +1,42 @@
+[
+  {
+    "question_id": "q1",
+    "question": "What defines code blocks in Python?",
+    "relevant_doc_ids": ["python_basics.md"]
+  },
+  {
+    "question_id": "q2",
+    "question": "What is the difference between TF-IDF and BM25?",
+    "relevant_doc_ids": ["retrieval_methods.md"]
+  },
+  {
+    "question_id": "q3",
+    "question": "What does Recall at k measure?",
+    "relevant_doc_ids": ["testing_and_metrics.md"]
+  },
+  {
+    "question_id": "q4",
+    "question": "Why does a valid citation not necessarily prove an answer claim?",
+    "relevant_doc_ids": ["rag_and_citations.md"]
+  },
+  {
+    "question_id": "q5",
+    "question": "Which checks detect missing values and schema changes?",
+    "relevant_doc_ids": ["data_quality.md"]
+  },
+  {
+    "question_id": "q6",
+    "question": "What is mean reciprocal rank used for?",
+    "relevant_doc_ids": ["testing_and_metrics.md"]
+  },
+  {
+    "question_id": "q7",
+    "question": "What does dense retrieval use to find semantically similar passages?",
+    "relevant_doc_ids": ["retrieval_methods.md"]
+  },
+  {
+    "question_id": "q8",
+    "question": "How should a reproducible benchmark be documented?",
+    "relevant_doc_ids": ["testing_and_metrics.md"]
+  }
+]
