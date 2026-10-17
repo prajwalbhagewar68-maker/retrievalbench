@@ -1,4 +1,3 @@
-from __future__ import annotations
 
 import re
 from collections.abc import Sequence
@@ -19,20 +18,36 @@ class TfidfRetriever:
     def __init__(self, chunks: Sequence[dict]):
         if not chunks:
             raise ValueError("At least one chunk is required")
+
         self.chunks = list(chunks)
-        self.vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2))
-        self.matrix = self.vectorizer.fit_transform([str(c["text"]) for c in self.chunks])
+        self.vectorizer = TfidfVectorizer(
+            stop_words="english",
+            ngram_range=(1, 2),
+        )
+        self.matrix = self.vectorizer.fit_transform(
+            [str(chunk["text"]) for chunk in self.chunks]
+        )
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
         if top_k <= 0:
             raise ValueError("top_k must be greater than zero")
         if not query.strip():
             return []
+
         query_vector = self.vectorizer.transform([query])
         scores = cosine_similarity(query_vector, self.matrix).ravel()
-        ranked = sorted(enumerate(scores), key=lambda pair: (-float(pair[1]), pair[0]))
+
+        ranked = sorted(
+            enumerate(scores),
+            key=lambda pair: (-float(pair[1]), pair[0]),
+        )
+
         return [
-            {**self.chunks[index], "score": float(score), "retriever": self.name}
+            {
+                **self.chunks[index],
+                "score": float(score),
+                "retriever": self.name,
+            }
             for index, score in ranked[:top_k]
             if score > 0
         ]
@@ -48,29 +63,46 @@ class BM25Retriever:
 
         if not chunks:
             raise ValueError("At least one chunk is required")
+
         self.chunks = list(chunks)
-        tokenized = [tokenize(str(c["text"])) for c in self.chunks]
-        self.model = BM25Okapi(tokenized)
+        tokenized_chunks = [
+            tokenize(str(chunk["text"])) for chunk in self.chunks
+        ]
+
+        self.model = BM25Okapi(tokenized_chunks)
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
         if top_k <= 0:
             raise ValueError("top_k must be greater than zero")
         if not query.strip():
             return []
+
         scores = self.model.get_scores(tokenize(query))
-        ranked = sorted(enumerate(scores), key=lambda pair: (-float(pair[1]), pair[0]))
+
+        ranked = sorted(
+            enumerate(scores),
+            key=lambda pair: (-float(pair[1]), pair[0]),
+        )
+
         return [
-            {**self.chunks[index], "score": float(score), "retriever": self.name}
+            {
+                **self.chunks[index],
+                "score": float(score),
+                "retriever": self.name,
+            }
             for index, score in ranked[:top_k]
             if score > 0
         ]
 
 
-def available_retrievers(chunks: Sequence[dict]) -> dict[str, object]:
-    """Build retrievers that are available in the current environment."""
-    retrievers: dict[str, object] = {"TF-IDF": TfidfRetriever(chunks)}
+def available_retrievers() -> list[str]:
+    retrievers = ["tfidf"]
+
     try:
-        retrievers["BM25"] = BM25Retriever(chunks)
+        import rank_bm25  # noqa: F401
+
+        retrievers.append("bm25")
     except ImportError:
         pass
+
     return retrievers
