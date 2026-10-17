@@ -80,3 +80,22 @@ def citation_validity(
 
 Path("src/retrievalbench/evaluation.py").write_text(code, encoding="utf-8")
 print("Evaluation file updated successfully.")
+def citation_validity(
+    citations: Sequence[str],
+    retrieved_chunk_ids: set[str],
+) -> dict[str, float | int]:
+    """Check citation references against retrieved chunk IDs; this does not prove claim support."""
+    if not citations:
+        return {
+            "valid_citations": 0,
+            "total_citations": 0,
+            "validity_rate": 0.0,
+        }
+
+    valid = sum(citation in retrieved_chunk_ids for citation in citations)
+
+    return {
+        "valid_citations": valid,
+        "total_citations": len(citations),
+        "validity_rate": valid / len(citations),
+    }
